@@ -80,7 +80,7 @@ A JSON object with a `name` and an `operations` list. Each op:
 
 Availability of an op's output = its explicit bound, or the maximum
 availability of its inputs. See
-[examples/factor-pipeline.json](examples/factor-pipeline.json) for a
+[examples/factor-pipeline.json](https://github.com/foolproof-labs/lookahead-free/blob/main/examples/factor-pipeline.json) for a
 complete factor pipeline (quotes → windows → PIT fundamentals → join →
 agentic retrieval → decision).
 
