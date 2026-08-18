@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "Verifiable look-ahead-freedom checks for the value-independent fragment of data pipelines: decision availability, window boundaries, PIT reads, joins and monotonicity, with explicit heuristic boundaries."
 readme = "README.md"
 requires-python = ">=3.11"
-license = { text = "MIT" }
+license = "MIT"
 keywords = ["lookahead", "point-in-time", "leakage", "backtest", "verification", "pipeline", "quant"]
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -16,7 +16,6 @@ classifiers = [
     "Intended Audience :: Developers",
     "Intended Audience :: Financial and Insurance Industry",
     "Intended Audience :: Science/Research",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.11",
