@@ -1,13 +1,13 @@
 # lookahead-free
 
 **Verifiable look-ahead-freedom for the value-independent fragment of data
-pipelines.** Declare your pipeline as a temporally annotated DAG — reads
+pipelines.** Declare your pipeline as a temporally annotated DAG 鈥?reads
 with release times, windows with ends, PIT reads with cutoffs, decisions
-with decision times — and `lf check` proves, in linear time, that no
+with decision times 鈥?and `lf check` proves, in linear time, that no
 decision consumes data that was not knowable yet. Python 3.11+, **zero
 dependencies**, Windows / Linux / macOS.
 
-**Status:** v0.1 — alpha. The model follows Fonseca (2026); expect the op
+**Status:** v0.1 鈥?alpha. The model follows Fonseca (2026); expect the op
 kinds and CLI to grow.
 
 ## Why this exists
@@ -15,16 +15,16 @@ kinds and CLI to grow.
 Look-ahead bias is the quiet killer of backtests: a pipeline that computes
 today's signal from data that only becomes available at 16:00, then
 "decides" at 15:00, looks great and lies. The usual defenses are
-heuristics — reviewers eyeballing code, linters matching patterns. This
+heuristics 鈥?reviewers eyeballing code, linters matching patterns. This
 tool is different: it checks a **declarative** description of the pipeline
 and gives an *exact* verdict on the fragment where exactness is possible.
 
 **Grounding.** Fonseca (2026),
 ["Look-Ahead-Freedom as Temporal Non-Interference"](https://econpapers.repec.org/paper/arxpapers/2607.04958.htm)
 (arXiv:2607.04958, submitted to ACM TOSEM) proves that look-ahead-freedom
-is **undecidable in general** (Π⁰₁-hard when availability depends on data
+is **undecidable in general** (螤鈦扳倎-hard when availability depends on data
 values), but admits a **linear-time decidable type-effect system** on the
-value-independent fragment — windowing, resampling, joins, point-in-time
+value-independent fragment 鈥?windowing, resampling, joins, point-in-time
 and vintage reads. This tool implements exactly that system:
 
 - every op carries a temporal bound (release / window end / PIT cutoff /
@@ -37,7 +37,7 @@ and vintage reads. This tool implements exactly that system:
 **Honest boundary (stated, not hidden).** Operations declared
 `value_dependent: true` are flagged at the **heuristic boundary** (P1):
 their temporal structure is still checked exactly, but for the operation
-itself no verifiable claim exists — Fonseca's undecidability result is
+itself no verifiable claim exists 鈥?Fonseca's undecidability result is
 precisely about value-dependent availability. The tool says so, in the
 report, every time.
 
@@ -69,7 +69,7 @@ A JSON object with a `name` and an `operations` list. Each op:
 | --- | --- |
 | `op_id` | unique node id |
 | `kind` | `read` / `window` / `resample` / `join` / `pit_read` / `vintage_read` / `transform` / `decision` / `write` |
-| `inputs` | references to other ops — by `op_id` **or by output name** (dataflow semantics; ambiguous output names are rejected) |
+| `inputs` | references to other ops 鈥?by `op_id` **or by output name** (dataflow semantics; ambiguous output names are rejected) |
 | `outputs` | data names this op produces |
 | `release` | (read) when the data becomes knowable |
 | `window_end` | (window/resample, required) end of the lookback window |
@@ -81,8 +81,7 @@ A JSON object with a `name` and an `operations` list. Each op:
 Availability of an op's output = its explicit bound, or the maximum
 availability of its inputs. See
 [examples/factor-pipeline.json](https://github.com/foolproof-labs/lookahead-free/blob/main/examples/factor-pipeline.json) for a
-complete factor pipeline (quotes → windows → PIT fundamentals → join →
-agentic retrieval → decision).
+complete factor pipeline (quotes 鈫?windows 鈫?PIT fundamentals 鈫?join 鈫?agentic retrieval 鈫?decision).
 
 ## The checks
 
@@ -90,10 +89,10 @@ agentic retrieval → decision).
 | --- | --- | --- |
 | `dag` | P0 | inputs resolve (op_id or output name), no duplicate ids, no cycles |
 | `monotonicity` | P0 | no op's bound is earlier than an input's availability (impossible availability) |
-| `decision_availability` | P0 | every input of a decision is available at or before the decision time — **the core look-ahead check** |
+| `decision_availability` | P0 | every input of a decision is available at or before the decision time 鈥?**the core look-ahead check** |
 | `window_boundary` | P0 | window/resample ops declare their window end |
 | `pit_reads` | P0 | PIT/vintage reads declare their cutoff |
-| `heuristic_boundary` | P1 | value-dependent ops present → structural checks exact, op semantics heuristic (per Fonseca's undecidability) |
+| `heuristic_boundary` | P1 | value-dependent ops present 鈫?structural checks exact, op semantics heuristic (per Fonseca's undecidability) |
 | `pipeline_shape` | P2 | informational |
 
 ## Philosophy
@@ -109,7 +108,7 @@ is now an industry-wide principle because look-ahead silently inflates
 alpha ([Daniel, Sornette & Wohrmann 2008](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1289222)).
 What has been missing is a *machine-checkable* statement of compliance.
 `lookahead-free` makes the claim "this pipeline does not peek" a CI gate
-instead of an audit ritual — and where the theory says no proof exists, it
+instead of an audit ritual 鈥?and where the theory says no proof exists, it
 says so instead of pretending.
 
 ## Development
@@ -124,11 +123,23 @@ and 3.12. Issues are handled on weekends; pull requests are welcome.
 
 ## Related work
 
-- [Fonseca (2026), Look-Ahead-Freedom as Temporal Non-Interference (arXiv:2607.04958)](https://econpapers.repec.org/paper/arxpapers/2607.04958.htm) — the formal property and its decidability boundary
-- [Daniel, Sornette & Wohrmann (2008), Look-Ahead Benchmark Bias (SSRN 1289222)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1289222) — the bias, quantified
-- [Kelly et al., Scaling Point-in-Time Language Models (NBER w35247)](https://www.nber.org/papers/w35247) — PIT as an industry principle
-- [Look-Ahead-Bench (arXiv:2601.13770)](https://ar5iv.labs.arxiv.org/html/2601.13770) — measuring look-ahead in PIT systems
-- [Temporal Leakage in LLM Backtesting (arXiv:2608.02985)](https://scirate.com/arxiv/2608.02985) — why passive scores cannot separate skill from leakage
+- [Fonseca (2026), Look-Ahead-Freedom as Temporal Non-Interference (arXiv:2607.04958)](https://econpapers.repec.org/paper/arxpapers/2607.04958.htm) 鈥?the formal property and its decidability boundary
+- [Daniel, Sornette & Wohrmann (2008), Look-Ahead Benchmark Bias (SSRN 1289222)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1289222) 鈥?the bias, quantified
+- [Kelly et al., Scaling Point-in-Time Language Models (NBER w35247)](https://www.nber.org/papers/w35247) 鈥?PIT as an industry principle
+- [Look-Ahead-Bench (arXiv:2601.13770)](https://ar5iv.labs.arxiv.org/html/2601.13770) 鈥?measuring look-ahead in PIT systems
+- [Temporal Leakage in LLM Backtesting (arXiv:2608.02985)](https://scirate.com/arxiv/2608.02985) 鈥?why passive scores cannot separate skill from leakage
+
+## Project family
+
+Part of [Foolproof Labs](https://github.com/foolproof-labs) — a toolchain
+against self-deception in quantitative research:
+
+- [pit-adjuster](https://github.com/foolproof-labs/pit-adjuster) — PIT back-adjustment with static forward-adjustment drift detection
+- [falsification-ledger](https://github.com/foolproof-labs/falsification-ledger) — pre-registration and falsification ledger
+- [factor-qc](https://github.com/foolproof-labs/factor-qc) — fail-closed backtest quality gate
+- [lesson-book](https://github.com/foolproof-labs/lesson-book) — tuition memory for traders
+- [lookahead-free](https://github.com/foolproof-labs/lookahead-free) — verifiable look-ahead-freedom checks
+- [ashare-data-immunity](https://github.com/foolproof-labs/ashare-data-immunity) — data immunity for A-share daily bars
 
 ## License
 
