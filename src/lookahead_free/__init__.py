@@ -4,7 +4,7 @@ Grounding: Fonseca (2026), "Look-Ahead-Freedom as Temporal Non-Interference"
 (arXiv:2607.04958) proves look-ahead-freedom is undecidable in general
 (pi-0-1-hard when availability depends on data values), but admits a
 linear-time decidable type-effect system on the *value-independent
-fragment* 鈥?windowing, resampling, joins, point-in-time and vintage reads,
+fragment* —windowing, resampling, joins, point-in-time and vintage reads,
 agentic retrieval.
 
 This tool implements exactly that fragment as a declarative pipeline DAG
