@@ -1,5 +1,10 @@
 # lookahead-free
 
+![PyPI version](https://img.shields.io/pypi/v/lookahead-free.svg)
+![PyPI downloads](https://img.shields.io/pypi/dm/lookahead-free.svg)
+![CI](https://github.com/foolproof-labs/lookahead-free/actions/workflows/ci.yml/badge.svg)
+![License](https://img.shields.io/badge/license-MIT-blue)
+
 ## 中文说明
 
 `lookahead-free` 用于检查量化数据流程是否使用了当时尚未公开的数据，
