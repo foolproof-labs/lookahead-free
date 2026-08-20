@@ -18,14 +18,6 @@ dependencies**, Windows / Linux / macOS.
 **Status:** v0.1 —alpha. The model follows Fonseca (2026); expect the op
 kinds and CLI to grow.
 
-## 中文简介
-
-`lookahead-free` 用于检查量化数据流程是否使用了当时尚未公开的数据，
-适合 A 股回测中的行情、财务和公司行为数据流程。你用带时间标记的流程描述
-输入数据何时可用，`lf check` 再检查决策是否只读取了当时已知的信息。对于
-依赖数据值才决定发布时间的复杂操作，它只报告边界，不声称可以完全证明没有
-未来数据，因此不能替代数据供应商和研究流程的人工核验。
-
 ## Why this exists
 
 Look-ahead bias is the quiet killer of backtests: a pipeline that computes
