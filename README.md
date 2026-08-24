@@ -20,7 +20,7 @@ with decision times —and `lf check` proves, in linear time, that no
 decision consumes data that was not knowable yet. Python 3.11+, **zero
 dependencies**, Windows / Linux / macOS.
 
-**Status:** v0.1 —alpha. The model follows Fonseca (2026); expect the op
+**Status:** v0.1.1 alpha, published on PyPI. The model follows Fonseca (2026); expect the op
 kinds and CLI to grow.
 
 ## Why this exists
@@ -57,7 +57,7 @@ report, every time.
 ## Quick start
 
 ```bash
-# install from PyPI (once published)
+# install the published package from PyPI
 pip install lookahead-free
 
 # or run without installing anything:
