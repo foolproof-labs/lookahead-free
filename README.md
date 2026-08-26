@@ -32,6 +32,15 @@ heuristics —reviewers eyeballing code, linters matching patterns. This
 tool is different: it checks a **declarative** description of the pipeline
 and gives an *exact* verdict on the fragment where exactness is possible.
 
+**Where it fits.** `lookahead-free` checks the *code* —whether a pipeline's
+data-flow timing is verifiably clean (a static scan of a declarative
+pipeline description). It does not constrain the researcher's behavior;
+that is the job of [`falsification-ledger`](https://github.com/foolproof-labs/falsification-ledger),
+which pre-registers claims and keeps tamper-evident receipts (a process
+constraint). The two are complementary, not overlapping: one proves the
+pipeline did not peek; the other proves the researcher did not revise
+expectations after seeing the results.
+
 **Grounding.** Fonseca (2026),
 ["Look-Ahead-Freedom as Temporal Non-Interference"](https://econpapers.repec.org/paper/arxpapers/2607.04958.htm)
 (arXiv:2607.04958, submitted to ACM TOSEM) proves that look-ahead-freedom
@@ -153,6 +162,8 @@ against self-deception in quantitative research:
 - [lesson-book](https://github.com/foolproof-labs/lesson-book) — tuition memory for traders
 - [lookahead-free](https://github.com/foolproof-labs/lookahead-free) — verifiable look-ahead-freedom checks
 - [ashare-data-immunity](https://github.com/foolproof-labs/ashare-data-immunity) — data immunity for A-share daily bars
+
+Sister org: [Metabolism Tools](https://github.com/metabolism-tools) — [`workspace-metabolism`](https://github.com/metabolism-tools/workspace-metabolism), policy-driven file lifecycle management for agentic workspaces.
 
 ## License
 
