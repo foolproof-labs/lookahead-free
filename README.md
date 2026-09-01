@@ -2,7 +2,7 @@
 
 ![PyPI version](https://img.shields.io/pypi/v/lookahead-free.svg)
 ![PyPI downloads](https://img.shields.io/pypi/dm/lookahead-free.svg)
-![CI](https://github.com/foolproof-labs/lookahead-free/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/holdout-labs/lookahead-free/actions/workflows/ci.yml/badge.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
 ## 中文说明
@@ -35,7 +35,7 @@ and gives an *exact* verdict on the fragment where exactness is possible.
 **Where it fits.** `lookahead-free` checks the *code* —whether a pipeline's
 data-flow timing is verifiably clean (a static scan of a declarative
 pipeline description). It does not constrain the researcher's behavior;
-that is the job of [`falsification-ledger`](https://github.com/foolproof-labs/falsification-ledger),
+that is the job of [`falsification-ledger`](https://github.com/holdout-labs/falsification-ledger),
 which pre-registers claims and keeps tamper-evident receipts (a process
 constraint). The two are complementary, not overlapping: one proves the
 pipeline did not peek; the other proves the researcher did not revise
@@ -102,7 +102,7 @@ A JSON object with a `name` and an `operations` list. Each op:
 
 Availability of an op's output = its explicit bound, or the maximum
 availability of its inputs. See
-[examples/factor-pipeline.json](https://github.com/foolproof-labs/lookahead-free/blob/main/examples/factor-pipeline.json) for a
+[examples/factor-pipeline.json](https://github.com/holdout-labs/lookahead-free/blob/main/examples/factor-pipeline.json) for a
 complete factor pipeline (quotes -> windows -> PIT fundamentals -> join -> agentic retrieval -> decision).
 
 ## The checks
@@ -153,15 +153,15 @@ and 3.12. Issues are handled on weekends; pull requests are welcome.
 
 ## Project family
 
-Part of [Foolproof Labs](https://github.com/foolproof-labs) — a toolchain
+Part of [Holdout](https://github.com/holdout-labs) — a toolchain
 against self-deception in quantitative research:
 
-- [pit-adjuster](https://github.com/foolproof-labs/pit-adjuster) — PIT back-adjustment with static forward-adjustment drift detection
-- [falsification-ledger](https://github.com/foolproof-labs/falsification-ledger) — pre-registration and falsification ledger
-- [factor-qc](https://github.com/foolproof-labs/factor-qc) — fail-closed backtest quality gate
-- [lesson-book](https://github.com/foolproof-labs/lesson-book) — tuition memory for traders
-- [lookahead-free](https://github.com/foolproof-labs/lookahead-free) — verifiable look-ahead-freedom checks
-- [ashare-data-immunity](https://github.com/foolproof-labs/ashare-data-immunity) — data immunity for A-share daily bars
+- [pit-adjuster](https://github.com/holdout-labs/pit-adjuster) — PIT back-adjustment with static forward-adjustment drift detection
+- [falsification-ledger](https://github.com/holdout-labs/falsification-ledger) — pre-registration and falsification ledger
+- [factor-qc](https://github.com/holdout-labs/factor-qc) — fail-closed backtest quality gate
+- [lesson-book](https://github.com/holdout-labs/lesson-book) — tuition memory for traders
+- [lookahead-free](https://github.com/holdout-labs/lookahead-free) — verifiable look-ahead-freedom checks
+- [ashare-data-immunity](https://github.com/holdout-labs/ashare-data-immunity) — data immunity for A-share daily bars
 
 Sister org: [Metabolism Tools](https://github.com/metabolism-tools) — [`workspace-metabolism`](https://github.com/metabolism-tools/workspace-metabolism), policy-driven file lifecycle management for agentic workspaces.
 
