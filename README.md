@@ -78,10 +78,21 @@ lf check --pipeline examples/factor-pipeline.json
 lf check --pipeline pipeline.json --json   # machine-readable verdict
 ```
 
+Value-dependent research code is outside the verifiable fragment. For that
+code there is a **heuristic companion** — an AST scan of suspicious timing
+idioms (future subscript/slice) and untimestamped fetch calls. It is
+explicitly *not* a proof; hard findings fail, review findings are listed:
+
+```bash
+lf scan --source my_calculator.py
+lf scan --source my_calculator.py --json
+```
+
 Exit codes: `0` = no look-ahead in the value-independent fragment,
 `1` = at least one P0 temporal violation (or unresolvable DAG),
 `2` = usage error. Wire it into CI as a hard gate on every pipeline
-definition.
+definition. `lf scan` exits `1` only on hard heuristic findings (H001/H002);
+review findings (H003) are advisory.
 
 ## Pipeline format
 
