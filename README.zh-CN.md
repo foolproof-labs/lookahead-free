@@ -20,7 +20,7 @@
 决策消费了当时尚不可知的数据。Python 3.11+，**零依赖**，
 支持 Windows / Linux / macOS。
 
-**状态：** v0.1.1 alpha，已发布到 PyPI。模型遵循 Fonseca (2026)；
+**状态：** v0.1.3 alpha，已发布到 PyPI。模型遵循 Fonseca (2026)；
 操作种类与 CLI 预计会继续扩展。
 
 ## 为什么存在

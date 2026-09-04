@@ -16,7 +16,7 @@ heuristic boundary (P1), because for them no verifiable claim exists.
 from .checks import check_pipeline
 from .model import Pipeline, load_pipeline
 
-__version__ = "0.1.2"
+__version__ = "0.1.3"
 
 __all__ = ["Pipeline", "check_pipeline", "load_pipeline"]
 
